@@ -1,7 +1,6 @@
 package com.demoblaze;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,14 +32,17 @@ public class CartPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     @Step("Получить Total price, указанный в корзине.")
     public String getTotalPrice() {
         return totalPrice.getText();
     }
+
     @Step("Получить price, указанный в корзине.")
     public String getProductPrice() {
         return productPrice.getText();
     }
+
     @Step("Удалить товар из корзины.")
     public void clickDelete() {
         new WebDriverWait(driver, Duration.ofMinutes(1))
@@ -66,6 +68,7 @@ public class CartPage {
         // подожди 8 секунд, пока появится веб-элемент с нужным текстом
         new WebDriverWait(driver, Duration.ofSeconds(8)).until(urlToBe(BaseSetUpTest.URL + CART_PATH));
     }
+
     @Step("Перейти на страницу корзины.")
     public void load() {
         driver.get(BaseSetUpTest.URL + CART_PATH);
